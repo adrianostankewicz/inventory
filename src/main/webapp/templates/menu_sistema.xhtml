@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+<ui:composition>
+	<h:form>
+		<p:menubar>
+			<p:menuitem icon="fa fa-home" url="/home/Dashboard.jsf" />
+			<p:submenu label="Inventário" icon="fa fa-list-alt">
+				<p:menuitem value="Ocorrência" icon="fa fa-book" url="/inventario/Ocorrencia.jsf"/>
+				<p:menuitem value="Nota de Débito" icon="fa fa-credit-card" url="/inventario/NotaDebito.jsf" />
+				<p:submenu label="Batimento" icon="fa fa-gavel">					
+					<p:menuitem value="Batimento de Saldo" icon="fa fa-balance-scale" url="/inventario/batimento/BatimentoDeSaldo.jsf" />
+				</p:submenu>
+				<p:submenu label=" Estoque" icon="fa fa-cube">
+					<p:menuitem value="Importar Estoque" icon="fa fa-cubes" url="/inventario/estoque/ImportarEstoque.jsf" />
+					<p:menuitem value="Importar Endereçamento" icon="fa fa-arrows" url="/inventario/estoque/ImportarEnderecamento.jsf" />
+				</p:submenu>
+				<p:submenu label="Cadastro" icon=" fa fa-file-text-o">
+					<p:menuitem value="Produto" icon="fa fa-laptop" url="/admin/cadastro/Produto.jsf" />
+					<p:menuitem value="Fabricante" icon="fa fa-industry" url="/admin/cadastro/Fabricante.jsf" />
+					<p:menuitem value="Hierarquia" icon="fa fa-sitemap" url="/admin/cadastro/Hierarquia.jsf" />
+					<p:menuitem value="Grupo de Mercadoria" icon="fa fa-th-large" url="/admin/cadastro/GrupoMercadoria.jsf" />
+					<p:menuitem value="Depósito" icon="fa fa-codepen" url="/admin/cadastro/Deposito.jsf" />
+					<p:menuitem value="Avaliação de Produto" icon="fa fa-tasks" url="/admin/cadastro/AvaliacaoProduto.jsf" />
+					<p:menuitem value="Centro" icon="fa fa-crosshairs" url="/admin/cadastro/Centro.jsf" />
+					<p:menuitem value="Endereço" icon="fa fa-th" url="/admin/cadastro/Endereco.jsf" />
+					<p:menuitem value="Tipo de Produto" icon="fa fa-desktop" url="/admin/cadastro/TipoProduto.jsf" />
+					<p:menuitem value="Setor de Atividade" icon="fa fa-tag" url="/admin/cadastro/SetorAtividade.jsf" />
+				</p:submenu>
+			</p:submenu>
+			<f:facet name="options">
+				<ui:insert name="tela" />
+			</f:facet>
+		</p:menubar>
+	</h:form>
+</ui:composition> 
+</html>

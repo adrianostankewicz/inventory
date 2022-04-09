@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Manager pathname="" />
+	<Resource name="BeanManager" auth="Container"
+		type="javax.enterprise.inject.spi.BeanManager" factory="org.jboss.weld.resources.ManagerObjectFactory" />
+		
+		<Resource name="jdbc/inventoryDB" auth="Container"
+		factory="org.apache.naming.factory.BeanFactory"
+		type="com.mchange.v2.c3p0.ComboPooledDataSource"
+		driverClass="org.h2.Driver"
+		jdbcUrl="jdbc:h2:tcp://localhost/~/inventory" user="sa"
+		password="" minPoolSize="3" maxPoolSize="3" />   
+</Context>

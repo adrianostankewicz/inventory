@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<ui:composition template="/templates/interno.xhtml">
+	<ui:define name="tela">
+		<h:outputText value="Registro de Ocorrência"
+			style="font-weight: bold; margin-right: 5px;" />
+	</ui:define>
+	<ui:define name="corpo">
+		<h:form id="ocorrencia" prependId="false">
+			<p:toolbar>
+				<f:facet name="left">
+					<p:commandButton value="Salvar" icon="ui-icon-disk"
+						action="#{ocorrenciaBean.salvar}" ajax="false" />
+				</f:facet>
+			</p:toolbar>
+			<p:tabView style="margin : 5px;">
+				<p:tab title="Dados da Ocorrência">
+					<h:panelGrid id="gridOcorrencia" columns="2">
+						<p:outputLabel value="Ocorrência" for="ocorrencia"
+							style="margin:3px;" />
+						<p:inputText id="ocorrencia"
+							value="#{ocorrenciaBean.ocorrencia.codigo}" readonly="true"
+							style="margin:3px; text-align: center;" size="5" />
+
+						<p:outputLabel value="Data da Ocorrência" for="dataOcorrencia"
+							style="margin:3px;" />
+						<p:calendar id="dataOcorrencia" pattern="dd/MM/yyyy"
+							showOn="button" locale="pt_BR"
+							value="#{ocorrenciaBean.ocorrencia.dataOcorrencia}"
+							style="margin:3px; text-align: center;" size="8" />
+
+						<p:outputLabel value="Data da Finalização" for="dataFinalizado"
+							style="margin:3px;" />
+						<p:calendar id="dataFinalizado" pattern="dd/MM/yyyy"
+							showOn="button" locale="pt_BR"
+							value="#{ocorrenciaBean.ocorrencia.dataFinalizado}"
+							style="margin:3px; text-align: center;" size="8" />
+
+						<p:outputLabel value="Motivo" for="motivo" style="margin:3px;" />
+						<p:selectOneMenu id="motivo"
+							value="#{ocorrenciaBean.ocorrencia.motivoOcorrencia}"
+							style="margin:3px; text-align: center;">
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{ocorrenciaBean.motivoOcorrencias}"
+								var="motivoOcorrencia" itemValue="#{motivoOcorrencia}"
+								itemLabel="#{motivoOcorrencia.motivo}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Status" for="status" style="margin:3px;" />
+						<p:selectOneMenu id="status"
+							value="#{ocorrenciaBean.ocorrencia.statusOcorrencia}">
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{ocorrenciaBean.statusOcorrencias}"
+								var="statusOcorrencia" itemValue="#{statusOcorrencia}"
+								itemLabel="#{statusOcorrencia.status}" style="margin:3px; text-align: center;" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Responsável" for="responsavel"
+							style="margin:3px; text-align: center;" />
+						<p:selectOneMenu id="responsavel"
+							value="#{ocorrenciaBean.ocorrencia.responsavel}"
+							style="margin:3px;">
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{ocorrenciaBean.responsaveis}"
+								var="responsavel" itemValue="#{responsavel}"
+								itemLabel="#{responsavel.responsavel}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Observações" for="observacoes"
+							style="margin:3px;" />
+						<p:inputTextarea id="observacoes" rows="5" cols="55"
+							value="#{ocorrenciaBean.ocorrencia.observacoes}"
+							style="margin:3px;" />
+
+						<h:outputText />
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Referências">
+					<h:panelGrid id="dadosDocumento" columns="4">
+
+						<p:outputLabel value="Nota Fiscal Origem" for="notaFiscalOrigem" />
+						<p:inputText id="notaFiscalOrigem"
+							value="#{ocorrenciaBean.ocorrencia.notaFiscalOrigem}"
+							style="margin: 3px; text-align: center;" size="8" />
+
+						<p:outputLabel value="Data da NF Origem"
+							for="dataNotaFiscalOrigem" />
+						<p:calendar id="dataNotaFiscalOrigem" pattern="dd/MM/yyyy"
+							locale="pt_BR"
+							value="#{ocorrenciaBean.ocorrencia.dataNotaFiscalOrigem}"
+							showOn="button" style="margin: 3px; text-align: center;" size="8"/>
+
+						<p:outputLabel value="RNC" for="rnc" />
+						<p:inputText id="rnc" value="#{ocorrenciaBean.ocorrencia.rnc}" size="5" style=" text-align: center;"/>
+
+						<p:outputLabel value="Data da RNC " for="dataRNC" />
+						<p:calendar id="dataRNC" pattern="dd/MM/yyyy" locale="pt_BR"
+							value="#{ocorrenciaBean.ocorrencia.dataRnc}" showOn="button"
+							style="margin: 3px; text-align: center;" size="8"/>
+
+						<p:outputLabel value="Chamado" for="chamado" />
+						<p:inputText id="chamado"
+							value="#{ocorrenciaBean.ocorrencia.chamado}" style="margin: 3px; text-align: center;" size="10"/>
+
+						<h:outputText />
+						<h:outputText />
+
+						<p:outputLabel value="Data do Chamado " for="dataChamado" />
+						<p:calendar id="dataChamado" pattern="dd/MM/yyyy" locale="pt_BR"
+							value="#{ocorrenciaBean.ocorrencia.dataChamado}" showOn="button" size="8" style="margin: 3px; text-align: center;"/>
+
+						<p:outputLabel value="Data da Finalização" for="dataFimChamado" />
+						<p:calendar id="dataFimChamado" pattern="dd/MM/yyyy"
+							locale="pt_BR"
+							value="#{ocorrenciaBean.ocorrencia.dataConclusaoChamado}"
+							showOn="button" size="8" style="margin: 3px; text-align: center;"/>
+					</h:panelGrid>
+				</p:tab>
+				<p:tab title="Itens">
+					<h:panelGrid id="dadosItensOcorrencia" columns="2">
+
+						<p:outputLabel value="Produto" for="produto" />
+						<p:inputText id="produto"
+							value="#{ocorrenciaBean.itemOcorrencia.produto.codigoSAP}" size="8">
+							<p:ajax event="change" update="descricao"
+								listener="#{ocorrenciaBean.adicionarDescricaoProduto}" style=" text-align: center;"/>
+						</p:inputText>
+
+						<p:outputLabel value="Descrição" for="descricao" />
+						<p:inputText id="descricao"
+							value="#{ocorrenciaBean.itemOcorrencia.produto.descricao}"
+							readonly="true" size="50" />
+
+						<p:outputLabel value="Quantidade" for="quantidade" />
+						<pe:inputNumber id="quantidade" 
+							value="#{ocorrenciaBean.itemOcorrencia.quantidade}" size="5"
+							thousandSeparator="." decimalPlaces="0" style=" text-align: center;" validatorMessage="A quantidade deve ser 1 para cada item.">
+							<f:validateLongRange for="quantidade" minimum="1" maximum="1"/>	
+						</pe:inputNumber>
+
+						<p:outputLabel value="Serial Number" for="serialNumber" />
+						<p:inputText id="serialNumber"
+							value="#{ocorrenciaBean.itemOcorrencia.serialNumber}"
+							style="text-align: center;" />
+
+						<p:outputLabel value="Valor" for="valor" />
+						<pe:inputNumber id="valor"
+							value="#{ocorrenciaBean.itemOcorrencia.valor}" 
+							decimalSeparator="," thousandSeparator="." symbol="R$ " size="16" style=" text-align: center;">
+							<f:validateDoubleRange minimum="0.0" for="valor" />	
+						</pe:inputNumber>
+
+						<p:outputLabel value="Motivo" for="motivo" />
+						<p:selectOneMenu id="motivoItemOcorrencia"
+							value="#{ocorrenciaBean.itemOcorrencia.motivoItemOcorrencia}" style=" text-align: center;">
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{ocorrenciaBean.motivoItemOcorrencias}"
+								var="motivoItemOcorrencia" itemValue="#{motivoItemOcorrencia}"
+								itemLabel="#{motivoItemOcorrencia.descricao}" />
+						</p:selectOneMenu>
+
+						<p:commandButton value="Adicionar" icon="ui-icon-plusthick"
+							style="margin-top:10px;" ajax="false"
+							action="#{ocorrenciaBean.adicionarItem}" />
+
+					</h:panelGrid>
+					<p:panel id="pnlListaItens" header="Lista de Itens"
+						style="margin-top: 3px;">
+						<p:dataTable id="listaItens" var="itemOcorrencia"
+							emptyMessage="Sem registro(s)."
+							value="#{ocorrenciaBean.itens}">
+							<p:column style="width: 50px;" headerText="Produto">
+								<center>
+									<h:outputText value="#{itemOcorrencia.produto.idSAP}" />
+								</center>
+							</p:column>
+							<p:column style="width: 200px;" headerText="Descrição">
+								<h:outputText value="#{itemOcorrencia.produto.descricao}" />
+							</p:column>
+							<p:column style="width: 50px;" headerText="Quantidade">
+								<center>
+									<h:outputText value="#{itemOcorrencia.quantidade}" />
+								</center>
+							</p:column>
+							<p:column style="width: 80px;" headerText="Serial Number">
+								<center>
+									<h:outputText value="#{itemOcorrencia.serialNumber}" />
+								</center>
+							</p:column>
+							<p:column style="width: 80px;" headerText="Valor">
+								<center>
+									<h:outputText id="valor" value="#{itemOcorrencia.valor}">
+										<f:convertNumber type="currency" currencyCode="BRL"
+											minFractionDigits="2" />
+									</h:outputText>
+								</center>
+							</p:column>
+							<p:column style="width: 80px;" headerText="Motivo">
+								<center>
+									<h:outputText
+										value="#{itemOcorrencia.motivoItemOcorrencia.descricao}" />
+								</center>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+				</p:tab>
+			</p:tabView>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+<ui:composition template="/templates/interno.xhtml">
+	<ui:define name="tela">
+		<h:outputText value="Cadastro de Endereço"
+			style="font-weight: bold; margin-right: 5px;" />
+	</ui:define>
+		<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="Manual">
+				<h:form id="edicaoEndereco">
+					<p:toolbar>
+						<f:facet name="left">
+							<p:commandButton value="Salvar" icon="ui-icon-disk"
+								action="#{enderecoBean.salvar}" ajax="false" />
+						</f:facet>
+					</p:toolbar>
+					<h:panelGrid id="dadosEndecero" columns="2"
+						style="margin-top: 5px;">
+						<p:outputLabel value="Código" for="codigo" />
+						<p:inputText id="codigo"
+							value="#{enderecoBean.endereco.codigo}" readonly="true"
+							size="6" style=" text-align: center;" />
+							
+						<p:outputLabel value="Descrição" for="descricao" />
+						<p:inputText id="descricao" value="#{enderecoBean.endereco.descricao}" 
+									 size="20"/>	
+
+						<p:outputLabel value="Rua" for="rua" />
+						<p:inputText id="rua"
+							value="#{enderecoBean.endereco.rua}" size="2"
+							required="true" requiredMessage="Inserir a rua do porta palete." />
+						
+						<p:outputLabel value="Módulo" for="modulo" />
+						<p:inputText id="modulo"
+							value="#{enderecoBean.endereco.modulo}" size="2"
+							required="true" requiredMessage="Inserir o módulo na rua do porta palete." />
+							
+						<p:outputLabel value="Nível" for="nivel" />
+						<p:inputText id="nivel"
+							value="#{enderecoBean.endereco.nivel}" size="2"
+							required="true" requiredMessage="Inserir o nível do módulo na rua do porta palete." />
+							
+						<p:outputLabel value="Vão" for="vao" />
+						<p:inputText id="vao"
+							value="#{enderecoBean.endereco.vao}" size="1"
+							required="true" requiredMessage="Inserir o vão do nível do módulo do porta palete." />
+							
+						<p:outputLabel value="Unidade de Acondicionamento" for="unidadeAcondicionamento" />
+						<p:inputText id="unidadeAcondicionamento"
+							value="#{enderecoBean.endereco.unidadeAcondicionamento}" size="50"
+							required="true" requiredMessage="Inserir a UC do módulo do porta palete." />
+							
+						<p:outputLabel value="Item de Picking" for="picking" />
+						<p:selectBooleanCheckbox id="picking" value="#{enderecoBean.endereco.picking}"  />				
+					</h:panelGrid>
+				</h:form>
+			</p:tab>
+			<p:tab title="Arquivo">
+				<h:form id="carregarArquivo" enctype="multipart/form-data">
+					<p:panel id="upload" header="Carregar por Arquivo">
+						<p:fileUpload fileUploadListener="#{enderecoBean.salvarPorExcel}"
+							mode="advanced" fileLimit="1"
+							fileLimitMessage="Importar apenas um arquivo." update="@all"
+							style="height: 120px; width: 550px;" label="Selecionar"
+							cancelLabel="Cancelar" uploadLabel="Importar" />
+					</p:panel>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>
+</html>      

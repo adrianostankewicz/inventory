@@ -1,0 +1,32 @@
+body{
+	font-size: 12px;
+	font: calibri 12px;
+}
+
+.ui-layout-north {  
+	z-index: 30 !important;
+    overflow: visible !important;  
+}
+
+.ui-layout-north .ui-layout-unit-content {  
+    overflow: visible !important;  
+}
+
+.ui-layout-south {  
+	z-index: 30 !important;
+    overflow: visible !important;  
+}
+
+.ui-layout-south .ui-layout-unit-content {  
+    overflow: visible !important;  
+}
+
+.divergente{
+	background-color: #FF0000;
+	color: #FFFFFF;
+	background-image: none;
+}
+
+.batimentoSaldo{
+	text-align: center;
+}

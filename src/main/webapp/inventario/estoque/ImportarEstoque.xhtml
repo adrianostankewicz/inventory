@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/interno.xhtml">
+	<ui:define name="tela">
+		<h:outputText value="Importar estoque"
+			style="font-weight: bold; margin-right: 5px;" />
+	</ui:define>
+	<ui:define name="corpo">
+		<p:tabView>
+			<p:tab title="Estoque">
+				<h:form id="estoque" enctype="multipart/form-data">
+					<p:panel id="uploadEstoque" header="Estoque"
+						style="margin-bottom: 5px;">
+						<p:fileUpload fileUploadListener="#{estoqueBean.salvarPorExcel}" mode="advanced" 
+						    fileLimit="1" fileLimitMessage="Importar apenas um arquivo!" update="@all"
+							style="height: 120px; width: 550px;" label="Selecionar"
+							cancelLabel="Cancelar" uploadLabel="Importar" />
+					</p:panel>
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>
+</html>
